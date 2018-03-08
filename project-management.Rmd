@@ -1,0 +1,110 @@
+---
+title: "Project Management Notes"
+author: "Nicholas Viau"
+date: "December 11, 2017"
+output:
+  html_document:
+    css: styles.css
+    toc: no
+    toc:depth: 5
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+While there is a lot of written work coding practices, there is considerbly less attention on best practices for an effcient workflow project management. The following introduces my personal philosophy for project management in R. 
+
+Staying organized is always going to be an ongoing struggle for many people. Developing a simple, well-defined system can be enormously beneficial not just to your productivity, but to your overall confidence in your own abilities as well. It's a good feeling to be able to look back and see exactly what you accomplished.
+
+***
+
+## Background
+
+Each analysis should be organized as an self-contained project: a folder that holds __all__ of the files related to that piece of work. As Jenny Bryan [notes](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/), we should begin by making a distinction between the the things you do because of taste and habits ("workflow") and the logic and output that is the essence of your project ("product").
+
+In the end, your workflow should be something that best enables you to get your work done, but should be not be "hardwired" into the product that you create. The workflow is personal and interactive, while the output you create is public and real.
+
+### Determine What's Real
+
+One of the first steps you must take is determining what is *real*. That's to say, what will serve as the lasting record of what happened in your project? Most of us are brought up to see the finished, polished product as to what is real. Instead, it's better to think of the data, code, and text as what's real. The general idea behind this is that all output can be procedurally reproducible. With this information in the form of a script, you can recreate your final project. It's much harder (perhaps impossible) to do it the other way around.
+
+To help foster a sense of code being real, you should instruct RStudio not to preserve your workspace between sessions. This seems a bit intimidating because now every time you restart RStudio it will not remember the results of the code you ran in another session. However, the longterm benefit vastly outweighs any short term frustration. By not saving a workspace you are forced you to capture *all* of important interactions in your code (Wickham 2017). Some of the best way to learn this practice is to restart R often and re-run your script from the top ([Bryan 2017](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/)).
+
+***
+
+## Working Directory
+
+One common thing novice R users do is use the `setwd()` command. In reality, "the chance for this command having the desired effect - making file paths work - for anyone besides the original author is 0%". Moreover, it is doubtful it would even work for the same author in a few years or computers from now. 
+
+***
+
+## File Structure
+
+The following structure works well for me, but it is not necessarily prescriptive. Research projects evolve as you work on them. You should aim to create something that will cope with the changes that often arise when undertaking research or experimentation.  Also keep in mind that any workflow and efficient project management structure will necessarily reflect the user's goals and project traits. 
+
+### Chunking Operations
+
+* Chunk larger parts of your code.
+* Objects that take a long time to create can be saved as `.rds` files. Using `.rds` files also means that initital operations (such as downloading and cleaning) need not be performed everytime and you can focus more on the imporant downstream analysis.
+
+### Root Folder
+
+The underlying goal should is to keep the project root directory as clean as possible. For most projects, my root directory will contain two main files:
+
+1. Hi
+2. There
+
+> __Note:__ If you are using RStudio this directory will also contain an RStudio `.Rproj` file (and some other hidden files). Further, if you are using version control with git, this directory will also contain a markdown `.md` file called `README.md` and the gitignore file, but more on these later when we talk about version control.
+
+### General Directory Outline
+
+| Folder | Description 
+|------|----------------------------------------------------------------
+| `code/` | This directory contains all of my scripts. 
+| `data/` | The `data/` directory is where you store munged files -- i.e., any data produced by your scripts. Again, because this is the directory storing the data which will be read and analyzed by your analysis script, this folder should read-only and is never written to during analysis. 
+| `data-raw/` | This folder contains source data for the cleaning scripts that R will index and turn into structured data.
+| `doc/` | Here we save any documents associated with the project.
+| `fig/` | Here we save any figures associated with the project.
+
+### Filenames
+
+Generally speaking, I use a prefix system for organzing my work. Because scripts will be executed in sequence, I prefix them with numbers (single digits padded with zeroes). I also include a `_functions.R` file that contains any special functions I may need to include in my project.
+
+| Name | Description 
+|------|----------------------------------------------------------------
+| `_functions.R` | For project-specific functions. 
+| `00-download.R` |  Downloading and importing any data. I like to save any raw data into `.rds` files. 
+| `01-clean.R` | For heavy data cleanign scripts that fundamentallly manipulates the data.
+| `01-clean_test.R` | This would be a testing area for the cleaning script.
+| `02-explore.R` | For exploratory data analysis.
+
+### Some Notes on Paths
+
+Automating tasks means you must use file paths to refer to data and scripts. While this is failry straight forward, there are some confusing aspects of this system. There are two basic styles of paths: Mac/Linux and Windows. They differ in several ways. 
+
+* __Separation of path components__. Mac and Linux use standard slashes (e.g. `plots/diamonds.pdf`) and Windows uses backslashes (e.g. `plots\diamonds.pdf`). Thankfully R can understand both types regardless of the OS you are using. However, backslashes have a special meaning to R, so you need to "escape" the character when using it. Always use the Linux/Mac style with forward slashes.
+* __Absolute paths.__ In Windows they start with a drive letter (`C:`) or two backslashes (e.g., `\\servername`) and in windows they start with a  slash (e.g., `/users/nick`). Never use absolutely paths in your scripts. They hinder sharing.
+* __Pointing to home directory.__ In Mac/Linux systems, the `~` symbol points to the home directory of the project. Windows doesn't have the concept of a home directory, so `~` points to your documents directory. It's best to use "." (e.g., `./myproject/`)
+
+***
+
+## Version Control
+
+__*Suggested guides:*__
+
+* http://happygitwithr.com/
+* 
+
+Version control is automated way to manage the changes to your research material. Among its many benefits, version control allows you to delete and reduce workspace clutter and improve the overall readability and editing of your project.
+
+> __Note__: Readers should note that most of the projects I've worked on have been single-user repositories. I am by no means an expert on multi-contributor version control and branching.
+
+### Git Clients
+
+At the early stages you should try using a Git client. A Git client is a GUI that let's you sue Git without having to deal with [command line bullshittery](http://www.pgbovine.net/command-line-bullshittery.htm). I suggest using [SourceTree](http://www.sourcetreeapp.com/) or [GitKraken](https://www.gitkraken.com/). GitKraken works for all operating sysmtems (Windows, Mac, and Linux) so it might be more preferred.
+
+### Getting Started
+
+* Cover push, pull, etc.

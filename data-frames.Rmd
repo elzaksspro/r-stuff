@@ -1,0 +1,48 @@
+---
+title: "Data Frames"
+author: "Nicholas Viau"
+date: "January 16, 2018"
+output:
+  html_document:
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Some Notes on Data Frames
+
+# FAQ
+
+## How do I change all of the names of variables in a data frame?
+
+The base R method is also fairly quick and a bit less clunky.
+
+## How do I change specific names?
+
+One of the great things about tibbles is that they can accept non-standard naming (e.g., spaces, symbols etc.). As a rule I would not suggest having names like this, it does allow you to refer to them explicity when renaming them.
+
+As above, the base R way can be also be quick. However, keep in mind the following method changes variable names on their place in the data frame, not on their names. If the underlying structure of the data were to change, you could be left with problematic code.
+
+```{r, eval = FALSE}
+names(wb_ineq)[5:9] <- c("top10", "bot10", "gini", "b40_cons", "gdp_percap")
+```
+
+
+## How do I perform operations on the names of a data frame?
+
+Staying tidyverse specific, we can use the `set_names()` function from the purrr package.
+
+For example:
+
+```{r, set_names}
+library(purrr)
+
+set_names(mtcars, toupper)
+```

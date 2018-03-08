@@ -3,3 +3,6 @@ title: "About This Website"
 ---
 
 More about this website.
+
+
+<hr style="border-width: 3px; border-color: #505050;">

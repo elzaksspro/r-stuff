@@ -1,0 +1,43 @@
+---
+title: "Arrange"
+author: "Nicholas Viau"
+date: "January 16, 2018"
+output:
+  html_document:
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, include=FALSE}
+library(tidyverse)
+library(gapminder)
+library(nycflights13)
+```
+
+## Arrange Rows with `arrange()`
+
+Arrange defaults to ascending order. To get descening order, use the `desc()` function:
+
+```{r}
+arrange(flights, desc(arr_delay))
+```
+
+## How do I explicitly arrange NA values?
+
+Regardless if descending order is called, `NA` values will appear at the bottom of the data frame unless you explicity call them using `is.na`.
+
+```{r, eval=FALSE}
+arrange(df, x)
+
+arrange(df, desc(x))
+
+arrange(df, desc(is.na(x)))
+```

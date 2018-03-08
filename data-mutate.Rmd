@@ -1,0 +1,65 @@
+---
+title: "Mutate"
+author: "Nicholas Viau"
+date: "January 16, 2018"
+output:
+  html_document:
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, include=FALSE}
+library(tidyverse)
+library(gapminder)
+library(nycflights13)
+```
+
+# Understanding Mutate
+
+# Basic Operations
+
+# FAQ
+
+***
+
+## How do I change the class of columns?
+
+Sometimes you may have a data frame whose columns must be changed. Mutate allows multiple ways to acheive this.
+
+```{r}
+# Small subset of data
+df <- as_tibble(iris[1:5,])
+                
+# Mutate all columns
+df %>% mutate_all(as.character)
+```
+
+You can also specify columns explicitly with the `vars()` argument. 
+
+```{r}
+# Only certain columns
+df %>% mutate_at(vars(Species, Petal.Length), as.character)
+```
+
+You can also specify a series of columns connecting them with `:`.
+```{r}
+# Specify series of columns etc.
+df %>% mutate_at(vars(Sepal.Length:Petal.Length, Species), as.character)
+```
+
+Or you can use predicates. For example, this changes all factor columns to character:
+
+```{r}
+# Change class by predicate
+df %>% mutate_if(is.factor, as.character)
+```
+
+## How do I mutate within groups?

@@ -1,9 +1,32 @@
 name: "my-website"
 output_dir: "."
 navbar:
-  title: "My Website"
+  title: "R Stuff"
   left:
-    - text: "Home"
-      href: index.html
-    - text: "About"
-      href: about.html
+    - text: "Meta Topics"
+      menu:
+        - text: "Style Guide"
+          href: style-guide.html
+        - text: "Project Management"
+          href: project-management.html
+    - text: "Data Import"
+      menu:
+        - text: "Importing Data"
+          href: import.html
+        - text: "Basic"
+          href: import-basic.html
+        - text: "Importing Spreadsheets"
+          href: import-spreadsheets.html
+    - text: "Data Tidying"
+      menu:
+        - text: "TO ADD"
+    - text: "Data Wrangling"
+      menu:
+        - text: "Basic Operations"
+        - text: "---------"
+        - text: "Select Rows: Filter"
+          href: data-filter.html
+        - text: "Transform Data: Mutate"
+          href: data-mutate.html
+        - text: "Arrange Data: Arrange"
+          href: data-arrange.html

@@ -1,0 +1,50 @@
+---
+title: "Getting Started"
+author: "Nicholas Viau"
+date: "January 16, 2018"
+output:
+  html_document:
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+R is notorious for a steep learning curve. Much of this has to do with how R was designed and how it is maintained and developed.
+
+R’s base functionality is extended with packages. An R package is a collection of functions, data, and documentation that to work with data. Package development in R is organic and anybody can create and share them. While the popularity of R is thanks to the proliferation of user-built packages, this sort of organic development means that are many ways to do the same thing, often at varying levels of efficiency, code readability, and system cost. This can also mean learning the language and doing basic tasks can be very difficult if you do not understand the language well.
+
+While the pitfalls are avoidable, they often go unnoticed due to frustration associated with the learning process, and pitfalls soon turn into bad habits. One of the common bad habits people display when learning R is quickly searching for packages with little consideration of a larger analysis strategy. Consider the following example:
+
+
+```{r, eval = FALSE}
+# ADD LATER !!!
+```
+
+This results in a very frustrating experience. You should instead start to think of work as taking the form a pipeline. In short, an analysis pipeline is a script (or series of scripts) that, when executed, repeats.
+
+<hr style="border-width: 3px; border-color: #252525;">
+
+# Tidy Data
+
+Tidy data is a term that describes a standardized approach to structuring datasets that simplify analysis and visualization. As described by Hadley Wickham (Wickham 2014), tidy data have a specific structure:
+
+* Each variable is a column.
+* Each observation is a row.
+* Each type of observational unit is a table.
+
+The third the first two criterion make the third a given, so the majority of this guide will focus on the first two.
+
+<hr style="border-width: 3px; border-color: #252525;">
+
+_**Session Information:**_
+
+```{r, echo = FALSE}
+sessionInfo()
+```

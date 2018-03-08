@@ -1,0 +1,123 @@
+---
+title: "Filter"
+author: "Nicholas Viau"
+date: "January 16, 2018"
+output:
+  html_document:
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, include=FALSE}
+library(tidyverse)
+library(gapminder)
+library(nycflights13)
+```
+
+`filter()` takes logical expressions and returns the rows for which all are true. It accepts the standard suite of comparison operations: `>`, `>=`, `<`, `<=`, `!=` (not equal) and `==` for equal. Keep in mind that `=` does not mean equal when using filter. You will get an error.
+
+<hr style="border-width: 3px; border-color: #505050;">
+
+# Basic Operations
+
+## Filtering with Character Data
+
+We can filter character data in a similar yet slightly different manner.
+
+```{r}
+filter(flights, carrier == "UA", dest == "MIA")
+```
+
+**Keep in mind that filter is case sensitive.** If you're unsure about the case of certain characters you can use `grepl()`:
+
+```{r}
+filter(flights, grepl("ua", carrier, ignore.case = TRUE))
+
+# Or in a pipe...
+flights %>% filter(grepl("ua", carrier, ignore.case = TRUE))
+```
+
+<hr style="border-width: 3px; border-color: #505050;">
+
+# FAQ
+
+## How do I select rows based on number?
+
+```{r}
+filter(gapminder, lifeExp < 29)
+```
+
+***
+
+## How do I keep NA values?
+
+`filter()` only includes rows where the condition is `TRUE` and excludes both `FALSE` and `NA` values. However, sometimes `NA` values are important. If you want to return missing values, ask for them explicitly.
+
+```{r}
+df <- tibble(x = c(1, NA, 3), y = c(NA, 2, 5), z = c(6 ,2 ,8))
+
+filter(df, x > 1)
+```
+
+The `NA` values were dropped. Now include them explicity using `is.na()`:
+
+```{r}
+# Now include NA
+filter(df, is.na(x) | x > 1)
+```
+
+***
+
+## How do I remove NA values?
+
+You can use filter to remove `NA` values.
+
+```{r}
+df %>% filter(!is.na(x))
+```
+
+If you want to remove every obseveration that contains an NA values, `drop_na()` is what you're looking for.
+
+```{r}
+df %>% drop_na()
+```
+
+You can also perform `drop_na` on specific variables:
+
+```{r}
+# Single
+df %>% drop_na(x)
+
+# Series
+df %>% drop_na(x:y)
+```
+
+<hr style="border-width: 3px; border-color: #505050;">
+
+# Meta Topics
+
+Some meta topics that you may ask when using filter and related functions.
+
+## When should I subset and when should I save mini datasets?
+
+This is a good question and deserves some consideration on your end. 
+
+In most situations you can acheive your goals by subsetting data and not creating and saving mini datasets. To quote [Jenny Bryan](http://stat545.com/block009_dplyr-intro.html#think-before-you-create-excerpts-of-your-data): "Copies and excerpts of your data clutter your workspace, invite mistakes, and sow general confusion. Avoid whenever possible."
+
+## Why is subsetting data with numbers a bad idea? 
+
+You may be tempted to call rows from a data frame the following way. Don't.
+
+```{r, eval=FALSE}
+excerpt <- gapminder[241:252, ]
+```
+
+First, it isn't self-documenting. What is special about rows 241 though 252? Second, it's a fairly fragile action. This bit of code will produce different results if the data is changed in a row that effects the row order of the dataset, which can be highly likely.

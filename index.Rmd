@@ -1,5 +1,17 @@
 ---
-title: "My Website"
+title: "R Stuff"
 ---
 
-Hello, Website!
+<style>
+
+h1 {
+  font-weight: bold;
+  margin: 1em 0 .5em 0;
+}
+
+</style>
+
+
+### *A Collection of Hands-on R Notes* {style="padding-top: 0px;"}
+
+This website is a collection of notes for R. It's updated as I see fit. These notes are primarily written for use in the tidyverse suite of packages, although I will include base R code or suggestions from other packages where appropriate.
