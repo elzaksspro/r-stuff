@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Nicholas Viau" />
+
+<meta name="date" content="2017-11-13" />
+
+<title>R Style Guide</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R Stuff</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Meta Topics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="style-guide.html">Style Guide</a>
+    </li>
+    <li>
+      <a href="project-management.html">Project Management</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Import
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="import.html">Importing Data</a>
+    </li>
+    <li>
+      <a href="import-basic.html">Basic</a>
+    </li>
+    <li>
+      <a href="import-spreadsheets.html">Importing Spreadsheets</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Tidying
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">TO ADD</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Wrangling
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Basic Operations</li>
+    <li class="divider"></li>
+    <li>
+      <a href="data-filter.html">Select Rows: Filter</a>
+    </li>
+    <li>
+      <a href="data-mutate.html">Transform Data: Mutate</a>
+    </li>
+    <li>
+      <a href="data-arrange.html">Arrange Data: Arrange</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">R Style Guide</h1>
+<h4 class="author"><em>Nicholas Viau</em></h4>
+<h4 class="date"><em>November 13, 2017</em></h4>
+
+</div>
+
+
+<p>Code readability is an important step in project management. If code is written poorly not only is it difficult to read, but it will be frustrating to extend and potentially onerous to debug. There is no official R style manual, nor is there necessarily a “right” or “wrong” way to write code. However, there are many conventions that almost universally accepted, and many others that just make sense. That being said, this guide is based on several R style guides found on the web. Most notably:</p>
+<ul>
+<li>Hadley Wickham’s <a href="http://adv-r.had.co.nz/Style.html">R Style Guide</a> and the <a href="http://style.tidyverse.org/">tidyverse style guide</a>.</li>
+<li>Google’s <a href="https://google.github.io/styleguide/Rguide.xml">R style guide</a>.</li>
+<li>Jennifer Bryan’s <a href="https://www.stat.ubc.ca/~jenny/STAT545A/block19_codeFormattingOrganization.html">personal website</a>.</li>
+<li>Jean Fan’s <a href="http://jef.works/R-style-guide/">guide</a></li>
+<li>Paul Johnson’s <a href="https://cran.r-project.org/web/packages/rockchalk/vignettes/Rstyle.pdf">vignette</a>.</li>
+</ul>
+<p>This guide is not orthodoxy. If anything, the most important thing is that you should use consistent style.</p>
+<hr />
+<div id="notation-and-naming" class="section level2">
+<h2>Notation and Naming</h2>
+<div id="file-names" class="section level3">
+<h3>File Names</h3>
+<p>Files can proliferate very quickly in even a modest project. To keep things under control, file names should make sense, but be conservative about long they are. Always try to avoid adding ad hoc numbers at the end of files that perhaps made sense at the time of writing them, but not at all in the present. Also, file names whould always end in <code>.R</code></p>
+<p><strong>Good:</strong></p>
+<pre><code>fit-models.R
+utility-functions.R</code></pre>
+<p><strong>Bad:</strong></p>
+<pre><code>stuff3.r
+ok.R</code></pre>
+<p>If files need to be run in sequence, prefix them with numbers:</p>
+<pre><code>0-download.R
+1-parse.R
+2-explore.R</code></pre>
+<p>If you think you’ll have more than 10 files, left pad them with zeroes:</p>
+<pre><code>00-download.R
+01-parse.R
+...
+12-plot.R
+13-publish.R</code></pre>
+<p>If you are creating a testing file, create a separate file with the suffix “<code>_test</code>” attached. For example, <code>originalfilename_test.R</code>.</p>
+<p>Also pay attention to capitalization. While many operating systems tend to be case-insensitive, R and many version control systems are case sensitive. Generally, I prefer files names that all lower case.</p>
+<p>I also suggest utilizing symbol chracters for breaks in file names. Most programs don’t work well with spaces in the file paths. The added benefit of this is that if you use specialty symbols such as “_&quot; to break different parts, you can split file names using regular expressions when running scripts across multiple files of the same set. <a href="https://www.stat.ubc.ca/~jenny/STAT545A/block19_codeFormattingOrganization.html#naming-things"><em>Source</em></a></p>
+</div>
+<div id="object-names" class="section level3">
+<h3>Object Names</h3>
+<p>Variable and function names should be lowercase. Use underscores (_) to separate words within a name. Generally, variable names should be nouns and function names should be verbs. Always strive for names that are both succinct and meaningful, thought this is not always easy.</p>
+<p>Avoid using names of existing / common functions or variables. For instance, don’t name things “x” or create a function called “mean”.</p>
+<hr />
+</div>
+</div>
+<div id="syntax" class="section level2">
+<h2>Syntax</h2>
+<div id="general" class="section level3">
+<h3>General</h3>
+<p>For assigment, always use <code>&lt;-</code> not <code>=</code>.</p>
+<p>Do not use <code>;</code> to carry out multiple commands on a single line. It makes things very confusing.</p>
+</div>
+<div id="spacing" class="section level3">
+<h3>Spacing</h3>
+<p>Keep spaces between all infix operators (<code>=</code>, <code>+</code>, <code>&lt;-</code>, etc.), and when naming arguments in function calls. Commas should follow regular English rules – i.e., always a put a space after, but never before.</p>
+<p><strong>Good:</strong></p>
+<pre><code>average &lt;- mean(feet / 12 + inches, na.rm = TRUE)</code></pre>
+<p><strong>Bad:</strong></p>
+<pre><code>average&lt;-mean(feet/12+inches,na.rm=TRUE)</code></pre>
+</div>
+<div id="long-lines" class="section level3">
+<h3>Long Lines</h3>
+<p>Always strive to keep your code to 80 characters per line. RStudio will include a grey line in the script as a guide. If you find yourself using up space quickly, it may be the case that you encapsulate some of the work in a separate function. <a href="http://style.tidyverse.org/syntax.html#long-lines">Source</a></p>
+<hr />
+</div>
+</div>
+<div id="piping-operations" class="section level2">
+<h2>Piping Operations</h2>
+<p><em>For more on this see my notes on piped operations and the tidyverse.</em></p>
+<p>Use the pipe operator <code>%&gt;%</code> when you need to compile three or more functions together in a nested call, or when you are creating intermediate objects that you do not need. Each verb should have its own line. Following these rules will make it simpler to understand, rearrange, and debug.</p>
+<blockquote>
+<p><strong>Note:</strong> The <code>%&gt;%</code> operation comes from the magrittr package. Most tidyverse packages automatically load it, but sometime you may need to load magrittr explicitly. I often always include it at the start of my scripts for this reason.</p>
+</blockquote>
+<p>While pipes play a fundamental role in code, you should avoid using the pipe operator when:</p>
+<ul>
+<li>You need to manipulate more then one object at a time. A pipe should only be for a sequence of actions applied to one primary object.</li>
+<li>There are meaningful intermediate objects that could be given informative names.</li>
+</ul>
+<div id="spacing-and-indenting" class="section level3">
+<h3>Spacing and Indenting</h3>
+<p><code>%&gt;%</code> should have a space before it and a new line after it. After each step, each line should be indeneted two spaces (Rstudio will automatically indent piped operations).</p>
+<p>Though there’s nothing wrong with have a one-step pipe, you may want to rewrite to remove the pipe depending on the context.</p>
+<pre><code># This works
+iris %&gt;% arrange(Petal.Width)
+
+# So does this
+arrange(iris, Petal.Width)</code></pre>
+<p>These commands both do the same thing.</p>
+</div>
+<div id="long-lines-1" class="section level3">
+<h3>Long Lines</h3>
+<p>Bear in mind our ~80 chracter line limit. If you find yourself writing a piped function with very long lines, put each subargument on its own line.</p>
+<p>This:</p>
+<pre><code>iris %&gt;%
+  group_by(Species) %&gt;%
+  summarise(
+    Sepal.Length = mean(Sepal.Length),
+    Sepal.Width = mean(Sepal.Width),
+    Species = n_distinct(Species)
+  )</code></pre>
+<p>Is much better than this:</p>
+<pre><code>iris %&gt;%
+  group_by(Species) %&gt;%
+  summarise(
+    Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species)
+  )</code></pre>
+</div>
+<div id="assignment" class="section level3">
+<h3>Assignment</h3>
+<p>When working with pipes you should keep with the assignment conventions above. That being said, you can assign a new object with <code>-&gt;</code> at the end of the pipe. Avoid this technique. Beginning the code with the assignment ensure the name of the object serves as a heading, which reminds you the purpose of the pipe.</p>
+<p>You can also use the <code>%&lt;&gt;%</code> in magrittr. For example,</p>
+<pre><code>mtcars &lt;- mtcars %&gt;% 
+  transform(cyl = cyl * 2)</code></pre>
+<p>is equivalent to</p>
+<pre><code>mtcars %&lt;&gt;% transform(cyl = cyl * 2)</code></pre>
+<p>However, you should stick with <code>&lt;-</code> for any assignment operation. It should be clear whats happening to the data. A little bit of duplication (repeating the name of the object twice) is worth the clarity of the assignment.</p>
+</div>
+<div id="commenting" class="section level3">
+<h3>Commenting</h3>
+<p>In-line comments work fine within pipes. However, though they are very helpful at the early stages of analysis, keep comments to a minimum. As explained earlier, if you find yourself writing more comments than code, perhaps switch to RMarkdown.</p>
+<hr />
+</div>
+</div>
+<div id="dealing-with-duplication" class="section level2">
+<h2>Dealing With Duplication</h2>
+<p>Always strive to reduce code duplication. This will have three main benefits:</p>
+<ol style="list-style-type: decimal">
+<li>It illuminates the intent of your code, because your eyes are drawn to what’s different, not what stays the same.</li>
+<li>It’s much easier to make changes. You may need to change code not because of error, but because your needs change. Rather than remembering every location you copied-and-pasted code, you only need to make changes in one place.</li>
+<li>You’ll ultimately have fewer bugs.</li>
+</ol>
+<div id="functions" class="section level3">
+<h3>Functions</h3>
+<p>Functions reduce duplication by identifying repeated patterns of code.</p>
+</div>
+<div id="iteration" class="section level3">
+<h3>Iteration</h3>
+<p>Another helpful tool for reducing duplication is <strong>iteration</strong>, which is handy when you need to do the same thing to multiple inputs. The <a href="http://purrr.tidyverse.org/">purrr</a> package is a core tidyverse package and it provides a bevy of powerful programming tools.</p>
+<hr />
+</div>
+</div>
+<div id="other-miscellaneous-topics" class="section level2">
+<h2>Other Miscellaneous Topics</h2>
+<div id="replicating-randomness" class="section level3">
+<h3>Replicating Randomness</h3>
+<p>Always use the <code>set.seed()</code> function in order to guarantee randomly generated data occurs as it did in initital analysis.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
