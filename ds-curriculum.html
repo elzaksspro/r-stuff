@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Nicholas Viau" />
+
+<meta name="date" content="2018-04-23" />
+
+<title>DSC</title>
+
+<script src="ds-curriculum_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="ds-curriculum_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="ds-curriculum_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="ds-curriculum_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="ds-curriculum_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="ds-curriculum_files/navigation-1.1/tabsets.js"></script>
+<link href="ds-curriculum_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="ds-curriculum_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R Stuff</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Meta Topics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="style-guide.html">Style Guide</a>
+    </li>
+    <li>
+      <a href="project-management.html">Project Management</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Import
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="import.html">Importing Data</a>
+    </li>
+    <li>
+      <a href="import-basic.html">Basic</a>
+    </li>
+    <li>
+      <a href="import-spreadsheets.html">Importing Spreadsheets</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Tidying
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">TO ADD</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Wrangling
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Basic Operations</li>
+    <li class="divider"></li>
+    <li>
+      <a href="data-filter.html">Select Rows: Filter</a>
+    </li>
+    <li>
+      <a href="data-mutate.html">Transform Data: Mutate</a>
+    </li>
+    <li>
+      <a href="data-arrange.html">Arrange Data: Arrange</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">DSC</h1>
+<h4 class="author"><em>Nicholas Viau</em></h4>
+<h4 class="date"><em>April 23, 2018</em></h4>
+
+</div>
+
+
+<p>This is a general outline for learning the fundamentals of what many would call <em>data science</em>. This list is not set in stone and may change over time. I welcome and critiques or recommendations.</p>
+<p><strong><em>Basics:</em></strong></p>
+<ul>
+<li><strong>Tools</strong> (languages)
+<ul>
+<li>R / Python</li>
+<li>SQL</li>
+<li>git</li>
+<li>Big data infastructure?</li>
+</ul></li>
+<li><strong>Statistics</strong>
+<ul>
+<li>Probability</li>
+<li>Probability Distributions</li>
+<li>Central Limit Theorem &amp; Hypothesis Testing</li>
+<li>Randomization and Inference</li>
+</ul></li>
+<li><strong>Linear Algebra and Multivariate Calculus</strong></li>
+<li><strong>Project Management</strong>
+<ul>
+<li>Data Management / Integrity</li>
+<li>Data Structure</li>
+<li>Version Control</li>
+</ul></li>
+<li><strong>Principles of Data Communications and Visualization</strong></li>
+</ul>
+<p><strong><em>More Advanced Concepts:</em></strong></p>
+<ul>
+<li><strong>Statistical Learning</strong> - Involves both statistics and calculus. See <em>Introduction to Statistical Learning</em>.</li>
+<li><strong>Machine Learning and Prediction</strong> - See <em>Elements of Statistical Learning</em>.</li>
+<li><strong>Bayesian Statistics</strong> - As opposed to frequentist statistics. See David Robinson’s Bayesian statistics book?</li>
+</ul>
+<hr class="nick">
+<div id="statistics" class="section level2">
+<h2>Statistics</h2>
+<p>One of the great things about languages like R and Python is that many complex statistical operations can be completed in a few lines of code. Not only should you should know how to implement and interpret them, you should also know the underlying statistics behind them. Moreover, you should expect job interviews to ask you basic questions related statistics, specifically probability and probability distributions. Among the topics to read up on…</p>
+<ul>
+<li><strong>Probability</strong> - Start with basic principles of <a href="https://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter3.pdf">combinatorics (PDF)</a>. Practice with <a href="https://www.analyticsvidhya.com/blog/2017/04/40-questions-on-probability-for-all-aspiring-data-scientists/">probability questions</a> (also check out GRE questions related to probability). Practicing working with decision trees will be useful to help visualize and think through problems.</li>
+<li><strong>Probability Distributions</strong> - In an interview, you may be asked a question like “You have a process that behaves like X – what distribution would you use to model that process?” This questions requires you o map a random process to a sensible distribution. This <a href="http://blog.cloudera.com/blog/2015/12/common-probability-distributions-the-data-scientists-crib-sheet/">blog post</a> is a great start.</li>
+<li><strong>Central Limit Theorem &amp; Hypothesis Testing</strong> -</li>
+</ul>
+<hr class="nick">
+<div id="sources" class="section level3">
+<h3>Sources</h3>
+<ul>
+<li>The section on statistics is heavily borrowed from Carson Forter’s “<a href="https://towardsdatascience.com/how-to-ace-data-science-interviews-statistics-f3d363ad47b">How to Ace Data Science Interveiws: Statistics</a>”</li>
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
