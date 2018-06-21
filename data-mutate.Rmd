@@ -24,9 +24,61 @@ library(nycflights13)
 
 # Understanding Mutate
 
+The `mutate()` function allows you to edit and create new columns.
+
+Other interesting points:
+
+* The pipe means you can follow a clear a logical order of operations.
+* You can refer to columns you just created.
+* It supports many, many creation functions.
+* Can be used in combination with __dplyr__'s `case_when()` function to recode variables in place.
+
+<hr class="nick">
+
 # Basic Operations
 
+
+## Recoding Variables
+
+The `case_when()` function allows you to vectorise multiple `if` and `else if` statements. It is an R equivalent of the SQL `CASE WHEN` statement. It is particularly useful when used with mutate when you want to create new variables based on a complex combination of other variables.
+
+_Sources:_
+
+* https://dplyr.tidyverse.org/reference/case_when.html
+
+*** 
+
+## Basic Math Operations
+
+You can use the suite of R's standard arithmetic operators: `+`, `-`, `*`, `/`, and `^`. Keep in mind that these are all vectorised and use the __recylcing rule__ discussed in the R Basics section. 
+
+_To add._
+
+***
+
+## Editing Text
+
+_To add._
+
+
+
+***
+
+## Fixing Dates
+
+To fix dates you should use the __lubridate__ package that ships with the tidyverse suite. A few examples:
+
+_To add._
+
+<hr class="nick">
+
 # FAQ
+
+***
+
+## How do I keep only the new variables I created?
+
+Use `transmute()` instead of `mutate()`.
 
 ***
 
@@ -62,4 +114,10 @@ Or you can use predicates. For example, this changes all factor columns to chara
 df %>% mutate_if(is.factor, as.character)
 ```
 
+***
+
 ## How do I mutate within groups?
+
+```{r}
+# df %>% group_by(cat) %>% mutate(id = row_number())
+```

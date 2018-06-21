@@ -1,0 +1,98 @@
+---
+title: "Linear Regression"
+author: "Nicholas Viau"
+date: "June 19, 2018"
+output:
+  html_document:
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+> The following uses the `MASS` and `ISLR` packages.
+
+# Linear Regression Basics
+
+Add.
+
+<hr class="nick">
+
+# Simple Linear Regression in R
+
+The __MASS__ library contains the `Boston` data set, which records `medv` (median house value) for neighborhoods around Boston.
+
+```{r}
+library(MASS)
+library(ISLR)
+```
+
+Let's start by fitting a simple linear regression using the `lm()` function. We will use `medv` as the response and `lstat` as the predictor. The basic syntax is `lm(y ~ x, data)`, where `y` is the response, `x` is the predictor, and `data` is our data set.
+
+```{r}
+lm_fit <- lm(data = Boston, medv ~ lstat)
+```
+
+If we send `lm_fit` to the command line, we will get some basic model output. 
+
+```{r}
+lm_fit
+```
+
+We can use `summary(lm_fit)` to get more detailed information about the model. It will give us p-values, standard errors for the coeffecients, as well as the $R^2$ statistic and the F-statistic for the model.
+
+```{r}
+summary(lm_fit)
+```
+
+## Extracting Information
+
+You can use the `names()` function to see what other information are stored in `lm_fit`. You canextract these quantities by name---e.g., `lm_fit$coeffeceints`---but you can also use certain predefined extractors like `coef()`.
+
+```{r}
+# Print names
+names(lm_fit)
+
+# Coeffecient extractor
+coef(lm_fit)
+```
+
+### Confidence Intervals
+
+Use the `confint()` function to get a __confidence interval for the coeffecient estimates__.
+
+```{r}
+confint(lm_fit)
+```
+
+### Confidence Intervals for Prediction
+
+The `predict()` function is used to produce confidence intervals and prediction intervals for the prediction of `medv` given a value of `lstat`.
+
+```{r}
+predict(lm_fit, data.frame(lstat=c(5 ,10 ,15)),
+        interval = "confidence")
+```
+
+Where the 95% confidence interval associated with a `lstat` value of 10 is (24.47413, 25.63256).
+
+<hr class="nick">
+
+# Multiple Linear Regression
+
+## Basics
+
+### Excluding Variables
+
+
+## Interaction Terms
+
+It's easy to include __interaction terms__ using the `lm()` function.
+
+## Qualitative Predictors

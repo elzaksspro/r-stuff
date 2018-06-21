@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -475,3 +476,533 @@ $(document).ready(function () {
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Nicholas Viau" />
+
+<meta name="date" content="2018-01-16" />
+
+<title>Mutate</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R Stuff</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Meta Topics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="style-guide.html">Style Guide</a>
+    </li>
+    <li>
+      <a href="project-management.html">Project Management</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Import
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="import.html">Importing Data</a>
+    </li>
+    <li>
+      <a href="import-basic.html">Basic</a>
+    </li>
+    <li>
+      <a href="import-spreadsheets.html">Importing Spreadsheets</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Tidying
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">TO ADD</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Wrangling
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Basic Operations</li>
+    <li class="divider"></li>
+    <li>
+      <a href="data-filter.html">Select Rows: Filter</a>
+    </li>
+    <li>
+      <a href="data-mutate.html">Transform Data: Mutate</a>
+    </li>
+    <li>
+      <a href="data-arrange.html">Arrange Data: Arrange</a>
+    </li>
+    <li class="dropdown-header">Specific Operations</li>
+    <li class="divider"></li>
+    <li>
+      <a href="data-dates-times.html">Dates and Times</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Statistics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">General</li>
+    <li class="divider"></li>
+    <li>
+      <a href="stats-basics.html">Basics</a>
+    </li>
+    <li>
+      <a href="stats-linear-regression.html">Linear Regression</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Mutate</h1>
+<h4 class="author"><em>Nicholas Viau</em></h4>
+<h4 class="date"><em>January 16, 2018</em></h4>
+
+</div>
+
+
+<div id="understanding-mutate" class="section level1">
+<h1>Understanding Mutate</h1>
+<p>The <code>mutate()</code> function allows you to edit and create new columns.</p>
+<p>Other interesting points:</p>
+<ul>
+<li>The pipe means you can follow a clear a logical order of operations.</li>
+<li>You can refer to columns you just created.</li>
+<li>It supports many, many creation functions.</li>
+<li>Can be used in combination with <strong>dplyr</strong>’s <code>case_when()</code> function to recode variables in place.</li>
+</ul>
+<hr class="nick">
+</div>
+<div id="basic-operations" class="section level1">
+<h1>Basic Operations</h1>
+<div id="recoding-variables" class="section level2">
+<h2>Recoding Variables</h2>
+<p>The <code>case_when()</code> function allows you to vectorise multiple <code>if</code> and <code>else if</code> statements. It is an R equivalent of the SQL <code>CASE WHEN</code> statement. It is particularly useful when used with mutate when you want to create new variables based on a complex combination of other variables.</p>
+<p><em>Sources:</em></p>
+<ul>
+<li><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="uri">https://dplyr.tidyverse.org/reference/case_when.html</a></li>
+</ul>
+<hr />
+</div>
+<div id="basic-math-operations" class="section level2">
+<h2>Basic Math Operations</h2>
+<p>You can use the suite of R’s standard arithmetic operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and <code>^</code>. Keep in mind that these are all vectorised and use the <strong>recylcing rule</strong> discussed in the R Basics section.</p>
+<p><em>To add.</em></p>
+<hr />
+</div>
+<div id="editing-text" class="section level2">
+<h2>Editing Text</h2>
+<p><em>To add.</em></p>
+<hr />
+</div>
+<div id="fixing-dates" class="section level2">
+<h2>Fixing Dates</h2>
+<p>To fix dates you should use the <strong>lubridate</strong> package that ships with the tidyverse suite. A few examples:</p>
+<p><em>To add.</em></p>
+<hr class="nick">
+</div>
+</div>
+<div id="faq" class="section level1">
+<h1>FAQ</h1>
+<hr />
+<div id="how-do-i-keep-only-the-new-variables-i-created" class="section level2">
+<h2>How do I keep only the new variables I created?</h2>
+<p>Use <code>transmute()</code> instead of <code>mutate()</code>.</p>
+<hr />
+</div>
+<div id="how-do-i-change-the-class-of-columns" class="section level2">
+<h2>How do I change the class of columns?</h2>
+<p>Sometimes you may have a data frame whose columns must be changed. Mutate allows multiple ways to acheive this.</p>
+<pre class="r"><code># Small subset of data
+df &lt;- as_tibble(iris[1:5,])
+                
+# Mutate all columns
+df %&gt;% mutate_all(as.character)</code></pre>
+<pre><code>## # A tibble: 5 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##   &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;  
+## 1 5.1          3.5         1.4          0.2         setosa 
+## 2 4.9          3           1.4          0.2         setosa 
+## 3 4.7          3.2         1.3          0.2         setosa 
+## 4 4.6          3.1         1.5          0.2         setosa 
+## 5 5            3.6         1.4          0.2         setosa</code></pre>
+<p>You can also specify columns explicitly with the <code>vars()</code> argument.</p>
+<pre class="r"><code># Only certain columns
+df %&gt;% mutate_at(vars(Species, Petal.Length), as.character)</code></pre>
+<pre><code>## # A tibble: 5 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##          &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;  
+## 1          5.1         3.5 1.4                  0.2 setosa 
+## 2          4.9         3   1.4                  0.2 setosa 
+## 3          4.7         3.2 1.3                  0.2 setosa 
+## 4          4.6         3.1 1.5                  0.2 setosa 
+## 5          5           3.6 1.4                  0.2 setosa</code></pre>
+<p>You can also specify a series of columns connecting them with <code>:</code>.</p>
+<pre class="r"><code># Specify series of columns etc.
+df %&gt;% mutate_at(vars(Sepal.Length:Petal.Length, Species), as.character)</code></pre>
+<pre><code>## # A tibble: 5 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##   &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;  
+## 1 5.1          3.5         1.4                  0.2 setosa 
+## 2 4.9          3           1.4                  0.2 setosa 
+## 3 4.7          3.2         1.3                  0.2 setosa 
+## 4 4.6          3.1         1.5                  0.2 setosa 
+## 5 5            3.6         1.4                  0.2 setosa</code></pre>
+<p>Or you can use predicates. For example, this changes all factor columns to character:</p>
+<pre class="r"><code># Change class by predicate
+df %&gt;% mutate_if(is.factor, as.character)</code></pre>
+<pre><code>## # A tibble: 5 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  
+## 1          5.1         3.5          1.4         0.2 setosa 
+## 2          4.9         3            1.4         0.2 setosa 
+## 3          4.7         3.2          1.3         0.2 setosa 
+## 4          4.6         3.1          1.5         0.2 setosa 
+## 5          5           3.6          1.4         0.2 setosa</code></pre>
+<hr />
+</div>
+<div id="how-do-i-mutate-within-groups" class="section level2">
+<h2>How do I mutate within groups?</h2>
+<pre class="r"><code># df %&gt;% group_by(cat) %&gt;% mutate(id = row_number())</code></pre>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
+>>>>>>> 86249a227e168e8d0a9892b02b90436fd0fb88f3

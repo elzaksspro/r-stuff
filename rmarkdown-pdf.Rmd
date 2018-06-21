@@ -1,0 +1,16 @@
+---
+title: "Creating PDF Documents"
+author: "Nicholas Viau"
+date: "May 31, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Sources
+
+* https://rmarkdown.rstudio.com/pdf_document_format.html#keeping_intermediate_tex
+* Document Templates - https://rmarkdown.rstudio.com/developer_document_templates.html
+* Stack question... https://stackoverflow.com/questions/35677487/r-markdown-template-creation?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa

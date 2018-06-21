@@ -16,9 +16,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-R is notorious for a steep learning curve. Much of this has to do with how R was designed and how it is maintained and developed.
-
-R’s base functionality is extended with packages. An R package is a collection of functions, data, and documentation that to work with data. Package development in R is organic and anybody can create and share them. While the popularity of R is thanks to the proliferation of user-built packages, this sort of organic development means that are many ways to do the same thing, often at varying levels of efficiency, code readability, and system cost. This can also mean learning the language and doing basic tasks can be very difficult if you do not understand the language well.
+R is notorious for a steep learning curve. Much of this has to do with how R was designed and how it is maintained and developed. R's base functionality is extended with __packages__. An R package is a collection of functions, data, and documentation that to work with data. Package development in R is organic and anybody can create and share them. While the popularity of R is thanks to the proliferation of user-built packages, this sort of organic development means that are many ways to do the same thing, often at varying levels of efficiency, code readability, and system cost. This can also mean learning the language and doing basic tasks can be very difficult if you do not understand the language well.
 
 While the pitfalls are avoidable, they often go unnoticed due to frustration associated with the learning process, and pitfalls soon turn into bad habits. One of the common bad habits people display when learning R is quickly searching for packages with little consideration of a larger analysis strategy. Consider the following example:
 
@@ -31,7 +29,7 @@ This results in a very frustrating experience. You should instead start to think
 
 <hr style="border-width: 3px; border-color: #252525;">
 
-# Tidy Data
+## Tidy Data
 
 Tidy data is a term that describes a standardized approach to structuring datasets that simplify analysis and visualization. As described by Hadley Wickham (Wickham 2014), tidy data have a specific structure:
 

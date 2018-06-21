@@ -1,0 +1,27 @@
+---
+title: "An Introduction"
+author: "Nicholas Viau"
+date: "November 13, 2017"
+output:
+  html_document:
+    css: styles.css
+    toc: no
+    toc:depth: 5
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+A common adage claims that up to 80% of an analysts time is devoted to transforming and processing data into a form that they can readily work with. Rarely will your data be in the form that you need it to be. This is problematic. Perhaps you need some new variables, some summaries, or maybe you want to alter some data in place to make it more intuitive or easier to explain. What was an earnest idea turns into a complex pipeline of operations and transformations.
+
+Moreover, because these steps may influence the statements and results of statistical analysis, data cleaning and processing is increasingly understood as a vital statistical operation that must be performed in a reproducible manner (de Jonge and van der Loo 2013). The best way to ensure this process is by automating in the form of scripts. R provides us with a fantastic environment for undertaking this.
+
+This website is devoted helping you along in your data cleaning and processing endeavors. The lion's share of the techniques and tools it covers belong to the [_**tidyverse**_](https://www.tidyverse.org/) suite of packages, an ecosystem of packages designed with common APIs and a shared grammar, data structure, and unlerying philosophy.
+
+## Breakdown of the Website
+
+* __Data Import__
+* __Data Tidying__
+* __Data Wrangling__

@@ -1,7 +1,7 @@
 ---
-title: "Importing Spreadsheets"
+title: "Dates and Times"
 author: "Nicholas Viau"
-date: "January 16, 2018"
+date: "June 19, 2018"
 output:
   html_document:
     css: styles.css
@@ -16,4 +16,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-__COMING SOON__
+# Dates and Times Basics
+
+

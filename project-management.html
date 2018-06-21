@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -454,3 +455,470 @@ $(document).ready(function () {
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Nicholas Viau" />
+
+<meta name="date" content="2017-12-11" />
+
+<title>Project Management Notes</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="alone.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R Stuff</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Meta Topics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="style-guide.html">Style Guide</a>
+    </li>
+    <li>
+      <a href="project-management.html">Project Management</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Import
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="import.html">Importing Data</a>
+    </li>
+    <li>
+      <a href="import-basic.html">Basic</a>
+    </li>
+    <li>
+      <a href="import-spreadsheets.html">Importing Spreadsheets</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Tidying
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">TO ADD</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Wrangling
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Basic Operations</li>
+    <li class="divider"></li>
+    <li>
+      <a href="data-filter.html">Select Rows: Filter</a>
+    </li>
+    <li>
+      <a href="data-mutate.html">Transform Data: Mutate</a>
+    </li>
+    <li>
+      <a href="data-arrange.html">Arrange Data: Arrange</a>
+    </li>
+    <li class="dropdown-header">Specific Operations</li>
+    <li class="divider"></li>
+    <li>
+      <a href="data-dates-times.html">Dates and Times</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Statistics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">General</li>
+    <li class="divider"></li>
+    <li>
+      <a href="stats-basics.html">Basics</a>
+    </li>
+    <li>
+      <a href="stats-linear-regression.html">Linear Regression</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Project Management Notes</h1>
+<h4 class="author"><em>Nicholas Viau</em></h4>
+<h4 class="date"><em>December 11, 2017</em></h4>
+
+</div>
+
+
+<p>While there is a lot of written work coding practices, there is considerbly less attention on best practices for an effcient workflow project management. The following introduces my personal philosophy for project management in R.</p>
+<p>Staying organized is always going to be an ongoing struggle for many people. Developing a simple, well-defined system can be enormously beneficial not just to your productivity, but to your overall confidence in your own abilities as well. It’s a good feeling to be able to look back and see exactly what you accomplished.</p>
+<hr />
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p>Each analysis should be organized as an self-contained project: a folder that holds <strong>all</strong> of the files related to that piece of work. As Jenny Bryan <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/">notes</a>, we should begin by making a distinction between the the things you do because of taste and habits (“workflow”) and the logic and output that is the essence of your project (“product”).</p>
+<p>In the end, your workflow should be something that best enables you to get your work done, but should be not be “hardwired” into the product that you create. The workflow is personal and interactive, while the output you create is public and real.</p>
+<div id="determine-whats-real" class="section level3">
+<h3>Determine What’s Real</h3>
+<p>One of the first steps you must take is determining what is <em>real</em>. That’s to say, what will serve as the lasting record of what happened in your project? Most of us are brought up to see the finished, polished product as to what is real. Instead, it’s better to think of the data, code, and text as what’s real. The general idea behind this is that all output can be procedurally reproducible. With this information in the form of a script, you can recreate your final project. It’s much harder (perhaps impossible) to do it the other way around.</p>
+<p>To help foster a sense of code being real, you should instruct RStudio not to preserve your workspace between sessions. This seems a bit intimidating because now every time you restart RStudio it will not remember the results of the code you ran in another session. However, the longterm benefit vastly outweighs any short term frustration. By not saving a workspace you are forced you to capture <em>all</em> of important interactions in your code (Wickham 2017). Some of the best way to learn this practice is to restart R often and re-run your script from the top (<a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/">Bryan 2017</a>).</p>
+<hr />
+</div>
+</div>
+<div id="working-directory" class="section level2">
+<h2>Working Directory</h2>
+<p>One common thing novice R users do is use the <code>setwd()</code> command. In reality, “the chance for this command having the desired effect - making file paths work - for anyone besides the original author is 0%”. Moreover, it is doubtful it would even work for the same author in a few years or computers from now.</p>
+<hr />
+</div>
+<div id="file-structure" class="section level2">
+<h2>File Structure</h2>
+<p>The following structure works well for me, but it is not necessarily prescriptive. Research projects evolve as you work on them. You should aim to create something that will cope with the changes that often arise when undertaking research or experimentation. Also keep in mind that any workflow and efficient project management structure will necessarily reflect the user’s goals and project traits.</p>
+<div id="chunking-operations" class="section level3">
+<h3>Chunking Operations</h3>
+<ul>
+<li>Chunk larger parts of your code.</li>
+<li>Objects that take a long time to create can be saved as <code>.rds</code> files. Using <code>.rds</code> files also means that initital operations (such as downloading and cleaning) need not be performed everytime and you can focus more on the imporant downstream analysis.</li>
+</ul>
+</div>
+<div id="root-folder" class="section level3">
+<h3>Root Folder</h3>
+<p>The underlying goal should is to keep the project root directory as clean as possible. For most projects, my root directory will contain two main files:</p>
+<ol style="list-style-type: decimal">
+<li>Hi</li>
+<li>There</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> If you are using RStudio this directory will also contain an RStudio <code>.Rproj</code> file (and some other hidden files). Further, if you are using version control with git, this directory will also contain a markdown <code>.md</code> file called <code>README.md</code> and the gitignore file, but more on these later when we talk about version control.</p>
+</blockquote>
+</div>
+<div id="general-directory-outline" class="section level3">
+<h3>General Directory Outline</h3>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="90%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Folder</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>code/</code></td>
+<td>This directory contains all of my scripts.</td>
+</tr>
+<tr class="even">
+<td><code>data/</code></td>
+<td>The <code>data/</code> directory is where you store munged files – i.e., any data produced by your scripts. Again, because this is the directory storing the data which will be read and analyzed by your analysis script, this folder should read-only and is never written to during analysis.</td>
+</tr>
+<tr class="odd">
+<td><code>data-raw/</code></td>
+<td>This folder contains source data for the cleaning scripts that R will index and turn into structured data.</td>
+</tr>
+<tr class="even">
+<td><code>doc/</code></td>
+<td>Here we save any documents associated with the project.</td>
+</tr>
+<tr class="odd">
+<td><code>fig/</code></td>
+<td>Here we save any figures associated with the project.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="filenames" class="section level3">
+<h3>Filenames</h3>
+<p>Generally speaking, I use a prefix system for organzing my work. Because scripts will be executed in sequence, I prefix them with numbers (single digits padded with zeroes). I also include a <code>_functions.R</code> file that contains any special functions I may need to include in my project.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="90%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>_functions.R</code></td>
+<td>For project-specific functions.</td>
+</tr>
+<tr class="even">
+<td><code>00-download.R</code></td>
+<td>Downloading and importing any data. I like to save any raw data into <code>.rds</code> files.</td>
+</tr>
+<tr class="odd">
+<td><code>01-clean.R</code></td>
+<td>For heavy data cleanign scripts that fundamentallly manipulates the data.</td>
+</tr>
+<tr class="even">
+<td><code>01-clean_test.R</code></td>
+<td>This would be a testing area for the cleaning script.</td>
+</tr>
+<tr class="odd">
+<td><code>02-explore.R</code></td>
+<td>For exploratory data analysis.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="some-notes-on-paths" class="section level3">
+<h3>Some Notes on Paths</h3>
+<p>Automating tasks means you must use file paths to refer to data and scripts. While this is failry straight forward, there are some confusing aspects of this system. There are two basic styles of paths: Mac/Linux and Windows. They differ in several ways.</p>
+<ul>
+<li><strong>Separation of path components</strong>. Mac and Linux use standard slashes (e.g. <code>plots/diamonds.pdf</code>) and Windows uses backslashes (e.g. <code>plots\diamonds.pdf</code>). Thankfully R can understand both types regardless of the OS you are using. However, backslashes have a special meaning to R, so you need to “escape” the character when using it. Always use the Linux/Mac style with forward slashes.</li>
+<li><strong>Absolute paths.</strong> In Windows they start with a drive letter (<code>C:</code>) or two backslashes (e.g., <code>\\servername</code>) and in windows they start with a slash (e.g., <code>/users/nick</code>). Never use absolutely paths in your scripts. They hinder sharing.</li>
+<li><strong>Pointing to home directory.</strong> In Mac/Linux systems, the <code>~</code> symbol points to the home directory of the project. Windows doesn’t have the concept of a home directory, so <code>~</code> points to your documents directory. It’s best to use “.” (e.g., <code>./myproject/</code>)</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="version-control" class="section level2">
+<h2>Version Control</h2>
+<p><strong><em>Suggested guides:</em></strong></p>
+<ul>
+<li><a href="http://happygitwithr.com/" class="uri">http://happygitwithr.com/</a></li>
+<li></li>
+</ul>
+<p>Version control is automated way to manage the changes to your research material. Among its many benefits, version control allows you to delete and reduce workspace clutter and improve the overall readability and editing of your project.</p>
+<blockquote>
+<p><strong>Note</strong>: Readers should note that most of the projects I’ve worked on have been single-user repositories. I am by no means an expert on multi-contributor version control and branching.</p>
+</blockquote>
+<div id="git-clients" class="section level3">
+<h3>Git Clients</h3>
+<p>At the early stages you should try using a Git client. A Git client is a GUI that let’s you sue Git without having to deal with <a href="http://www.pgbovine.net/command-line-bullshittery.htm">command line bullshittery</a>. I suggest using <a href="http://www.sourcetreeapp.com/">SourceTree</a> or <a href="https://www.gitkraken.com/">GitKraken</a>. GitKraken works for all operating sysmtems (Windows, Mac, and Linux) so it might be more preferred.</p>
+</div>
+<div id="getting-started" class="section level3">
+<h3>Getting Started</h3>
+<ul>
+<li>Cover push, pull, etc.</li>
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
+>>>>>>> 86249a227e168e8d0a9892b02b90436fd0fb88f3
