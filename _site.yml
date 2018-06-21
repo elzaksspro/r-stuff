@@ -30,3 +30,16 @@ navbar:
           href: data-mutate.html
         - text: "Arrange Data: Arrange"
           href: data-arrange.html
+        - text: "Specific Operations"
+        - text: "---------"
+        - text: "Dates and Times"
+          href: data-dates-times.html
+    - text: "Statistics"
+      menu:
+        - text: "General"
+        - text: "---------"
+        - text: "Basics"
+          href: stats-basics.html
+        - text: "Linear Regression"
+          href: stats-linear-regression.html
+

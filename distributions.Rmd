@@ -1,0 +1,47 @@
+---
+title: "D"
+author: "Nicholas Viau"
+date: "April 23, 2018"
+output:
+  html_document:
+    css: styles.css
+    toc: FALSE
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Probability distributions are fundamental pillars of "statistics, just like data structures are to computer science." They're a very important first step to learning statistics.
+
+So, what are they?
+
+"Probability distributions describe what we think the probability of each outcome is, which is sometimes more interesting to know than simply which single outcome is most likely."
+
+## Basics
+
+The horizontal axis is the set of possible outcomes. The vertical axis describes the probability of outcomes. Some distributions are descrete, with outcomes that are integers such as 1 or 5. When visualized these distributions will appear as sparse lines, "one for each outcome, where line height is the probability of that outcome." Some are continous, describing data that can take the form of any real number, such as -1.37 or 0.0005. These appear as curves. **The sum of the heights of the lines and the areas under the curves always add to 1.**
+
+
+## Distributions in Detail
+
+### Bernoulli
+
+
+### Uniform Distribution
+
+The uniform distribution has a flat PDF. This is the sort of distribution you would end up with after rolling a fair die many times. No matter what, the outcomes 1 to 6 are equally likely to happen.
+
+### Binomial Distribution
+
+The binomial distribution may be thought of as the sum of outcomes of things that follow a Bernoulli distribution. 
+
+### Hypergeometric
+
+
+***
+
+**Sources**
+
+* Cloudera Blog, http://blog.cloudera.com/blog/2015/12/common-probability-distributions-the-data-scientists-crib-sheet/

@@ -9,9 +9,11 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="Nicholas Viau" />
 
+<meta name="date" content="2018-05-15" />
 
-<title>R Stuff</title>
+<title>purrr</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -274,22 +276,40 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">R Stuff</h1>
+<h1 class="title toc-ignore">purrr</h1>
+<h4 class="author"><em>Nicholas Viau</em></h4>
+<h4 class="date"><em>May 15, 2018</em></h4>
 
 </div>
 
 
-<style>
+<div id="basics" class="section level2">
+<h2>Basics</h2>
+<pre class="r"><code>library(tidyverse)
 
-h1 {
-  font-weight: bold;
-  margin: 1em 0 .5em 0;
-}
-
-</style>
-<div id="a-collection-of-hands-on-r-notes" class="section level3" style="padding-top: 0px;">
-<h3><em>A Collection of Hands-on R Notes</em></h3>
-<p>This website is a collection of notes for R. It’s updated as I see fit. These notes are primarily written for use in the tidyverse suite of packages, although I will include base R code or suggestions from other packages where appropriate.</p>
+# Create some basic data.
+df &lt;- tibble(
+  a = rnorm(10),
+  b = rnorm(10),
+  c = rnorm(10),
+  d = rnorm(10)
+)</code></pre>
+<p>Resources:</p>
+<ul>
+<li>Jenny Bryan’s purrr Tutorial - <a href="https://jennybc.github.io/purrr-tutorial/" class="uri">https://jennybc.github.io/purrr-tutorial/</a></li>
+<li>Amber Thomas - <a href="https://amber.rbind.io/blog/2018/03/26/purrr_iterations/" class="uri">https://amber.rbind.io/blog/2018/03/26/purrr_iterations/</a></li>
+<li>Good! Has whole series… - <a href="https://colinfay.me/purrr-web-mining/" class="uri">https://colinfay.me/purrr-web-mining/</a></li>
+<li><a href="https://www.hvitfeldt.me/2018/01/purrr-tips-and-tricks/" class="uri">https://www.hvitfeldt.me/2018/01/purrr-tips-and-tricks/</a></li>
+<li>Lesser known purrr tricks - <a href="http://www.brodrigues.co/blog/2017-03-24-lesser_known_purrr/" class="uri">http://www.brodrigues.co/blog/2017-03-24-lesser_known_purrr/</a></li>
+</ul>
+</div>
+<div id="map2" class="section level2">
+<h2>map2()</h2>
+<p>Note that the arguments that vary for each call come before the function; arguments that are the same for every call come after.</p>
+</div>
+<div id="pmap" class="section level2">
+<h2>pmap()</h2>
+<p><code>pmap()</code> takes a list of arguments.</p>
 </div>
 
 

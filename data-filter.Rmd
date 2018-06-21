@@ -24,7 +24,7 @@ library(nycflights13)
 
 `filter()` takes logical expressions and returns the rows for which all are true. It accepts the standard suite of comparison operations: `>`, `>=`, `<`, `<=`, `!=` (not equal) and `==` for equal. Keep in mind that `=` does not mean equal when using filter. You will get an error.
 
-<hr style="border-width: 3px; border-color: #505050;">
+<hr class="nick">
 
 # Basic Operations
 
@@ -45,15 +45,24 @@ filter(flights, grepl("ua", carrier, ignore.case = TRUE))
 flights %>% filter(grepl("ua", carrier, ignore.case = TRUE))
 ```
 
-<hr style="border-width: 3px; border-color: #505050;">
+<hr class="nick">
 
 # FAQ
 
 ## How do I select rows based on number?
 
+For instance, say we want to see all observations of life expectancy below 29.
+
 ```{r}
 filter(gapminder, lifeExp < 29)
 ```
+
+We can use this in combination with other arguments, too. Let's see all years where life expectancy was below 80 in Japan.
+
+```{r}
+gapminder %>% filter(lifeExp < 80, country == "Japan")
+```
+
 
 ***
 
@@ -100,7 +109,7 @@ df %>% drop_na(x)
 df %>% drop_na(x:y)
 ```
 
-<hr style="border-width: 3px; border-color: #505050;">
+<hr class="nick">
 
 # Meta Topics
 

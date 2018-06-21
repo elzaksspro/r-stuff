@@ -1,0 +1,56 @@
+---
+title: "Select Columns: Select"
+author: "Nicholas Viau"
+date: "January 16, 2018"
+output:
+  html_document:
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, include=FALSE}
+library(tidyverse)
+library(gapminder)
+library(nycflights13)
+```
+
+# Understanding `select()`
+
+http://r4ds.had.co.nz/transform.html#select-columns-with-select
+
+`select()` allows you to easily capture a subset of variables using operation based on the _names_ of the variables.
+
+# Basic Operations
+
+## Selecting With Regex
+
+The only internal function that accepts regex is `matches()`.
+
+```{r}
+df <- tibble(id = 1:4, a1 = 1, d6 = 5, d = 4, a2 = 2, b6 = 3, s1 = 10, r2 = 7)
+df %>% select(id, matches("^b|a|d"))
+```
+
+## Selecting Letter and Number Range
+
+For instance, say you wanted to select the columns prefixed with the letter a and a number range of 1 through 2.
+
+```{r}
+df %>% select(id, num_range("a", 1:2))
+```
+
+## The `everything()` Helper
+
+For instance, may you have some variables you'd like to move to the start of the data frame.
+
+```{r}
+select(flights, time_hour, air_time, everything())
+```

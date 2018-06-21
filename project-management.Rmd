@@ -4,7 +4,7 @@ author: "Nicholas Viau"
 date: "December 11, 2017"
 output:
   html_document:
-    css: styles.css
+    css: alone.css
     toc: no
     toc:depth: 5
     self_contained: no

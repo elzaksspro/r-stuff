@@ -1,0 +1,59 @@
+---
+title: "Basic Statistical Operations"
+author: "Nicholas Viau"
+date: "June 19, 2018"
+output:
+  html_document:
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ensuring Reproducibility
+
+Use `set.seed()` to ensure reproducibility.
+
+## Creating Random Variables
+
+_Much is taken from Gareth et al. (2013)_
+
+Here we set the seed to 617 and produce a vector of 20 random varaibles.
+
+```{r}
+set.seed(617)
+
+rnorm(20)
+```
+
+By default, `rnorm()` will create standard normal variables with a mean of 0 and a standard deviation of 1. You can alter the mean and standard deviations with the `mean` and `sd` arguments. We can then compute the correlation between the two sets with the `cor()` function.
+
+```{r}
+x <- rnorm(20)
+y <- x + rnorm (20, mean = 50, sd = .1)
+
+cor(x, y)
+```
+
+The `mean()` and `var()` functions can be used to computer the mean and variance of a vector of numbers. 
+
+```{r}
+set.seed(617)
+y = rnorm (100)
+
+mean(y)
+
+var(y)
+
+sqrt(var(y))
+
+sd(y)
+```
+
+## Summaries

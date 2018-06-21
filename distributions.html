@@ -9,9 +9,11 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="Nicholas Viau" />
 
+<meta name="date" content="2018-04-23" />
 
-<title>R Stuff</title>
+<title>D</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -68,6 +70,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="styles.css" type="text/css" />
 
 </head>
 
@@ -274,22 +277,41 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">R Stuff</h1>
+<h1 class="title toc-ignore">D</h1>
+<h4 class="author"><em>Nicholas Viau</em></h4>
+<h4 class="date"><em>April 23, 2018</em></h4>
 
 </div>
 
 
-<style>
-
-h1 {
-  font-weight: bold;
-  margin: 1em 0 .5em 0;
-}
-
-</style>
-<div id="a-collection-of-hands-on-r-notes" class="section level3" style="padding-top: 0px;">
-<h3><em>A Collection of Hands-on R Notes</em></h3>
-<p>This website is a collection of notes for R. It’s updated as I see fit. These notes are primarily written for use in the tidyverse suite of packages, although I will include base R code or suggestions from other packages where appropriate.</p>
+<p>Probability distributions are fundamental pillars of “statistics, just like data structures are to computer science.” They’re a very important first step to learning statistics.</p>
+<p>So, what are they?</p>
+<p>“Probability distributions describe what we think the probability of each outcome is, which is sometimes more interesting to know than simply which single outcome is most likely.”</p>
+<div id="basics" class="section level2">
+<h2>Basics</h2>
+<p>The horizontal axis is the set of possible outcomes. The vertical axis describes the probability of outcomes. Some distributions are descrete, with outcomes that are integers such as 1 or 5. When visualized these distributions will appear as sparse lines, “one for each outcome, where line height is the probability of that outcome.” Some are continous, describing data that can take the form of any real number, such as -1.37 or 0.0005. These appear as curves. <strong>The sum of the heights of the lines and the areas under the curves always add to 1.</strong></p>
+</div>
+<div id="distributions-in-detail" class="section level2">
+<h2>Distributions in Detail</h2>
+<div id="bernoulli" class="section level3">
+<h3>Bernoulli</h3>
+</div>
+<div id="uniform-distribution" class="section level3">
+<h3>Uniform Distribution</h3>
+<p>The uniform distribution has a flat PDF. This is the sort of distribution you would end up with after rolling a fair die many times. No matter what, the outcomes 1 to 6 are equally likely to happen.</p>
+</div>
+<div id="binomial-distribution" class="section level3">
+<h3>Binomial Distribution</h3>
+<p>The binomial distribution may be thought of as the sum of outcomes of things that follow a Bernoulli distribution.</p>
+</div>
+<div id="hypergeometric" class="section level3">
+<h3>Hypergeometric</h3>
+<hr />
+<p><strong>Sources</strong></p>
+<ul>
+<li>Cloudera Blog, <a href="http://blog.cloudera.com/blog/2015/12/common-probability-distributions-the-data-scientists-crib-sheet/" class="uri">http://blog.cloudera.com/blog/2015/12/common-probability-distributions-the-data-scientists-crib-sheet/</a></li>
+</ul>
+</div>
 </div>
 
 

@@ -1,0 +1,117 @@
+---
+title: "R Regex"
+author: "Nicholas Viau"
+date: "July 18, 2017"
+output:
+  html_document:
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages, include=FALSE}
+library(stringr)
+library(magrittr)
+```
+
+# Regular Expressions
+
+Regular expressions are powerful tools for feature generation in datasets that have textual information.
+
+Use `str_view` and `str_view_all` to explore regular expressions. These functions take a character vector and a regular expression and show you how they match.
+
+
+## Meta Characters
+
+If you need to search a string for any of these characters, you can use the option `fixed=TRUE`.
+
+`grepl("^", gender, fixed = TRUE)`
+
+## Anchors
+
+Regular expressions will match any part of the string. You may want to anchor the regular expression so that it will match from the start or end of the string.
+
+* `^` matches the start of the string.
+* `$` matches the end of the string.
+
+Thus, using the caret (`^`) and the dollar sign (`$`), we will match only an entire string.
+
+If you set `multiline = TRUE` you can use `^` and `$` to match the start and end of each line, rather than the start and end of the complete string.
+
+## Alternative Patterns
+
+You can use alternation to pick between one or more alternative patterns. For example, `abc|d..f` will match either "abc" or "deaf". 
+
+If this gets confusing, you can just use paratheses to make it clear what you want:
+
+```{r regexalt}
+str_view(c("grey", "gray"), "gr(e|a)y")
+```
+
+Sources:
+
+* http://r4ds.had.co.nz/strings.html#character-classes-and-alternatives
+
+## Looking Back and Ahead
+
+One problem you are likely to encounter when working with text are spacing mistakes between words and punctuation. This is a problem because it may prevent tokenizing of relevant terms. For instance "Hi there.What is your name?" would result in the word "there.what". The following regex finds a period between letters but does actually select the letter themselves.
+
+```{r look}
+x <- "Hi there.What's your name?"
+
+# Look ahead
+str_view(x, '\\.(?=[[:alpha:]])')
+
+# Look behind
+str_view(x, '(?<=[[:alpha:]])\\.')
+
+# Look between
+str_view(x, '(?<=[[:alpha:]])\\.(?=[[:alpha:]])')
+
+# Find and replace...
+gsub('\\.(?=[[:alpha:]])', '. ', perl = TRUE, x)
+
+```
+
+### Between Two Elements
+
+```{r between}
+url <- "https://github.com/felixhaass/aiddata/tree/master/R/"
+
+str_replace(url, "https://github.com/.*[^ /.*/$]", "HELLO")
+
+```
+
+This comes in handy when we want to split a string based on certain values but keep them.
+
+```{r split2}
+# Split 
+strsplit(x, '(?<=there)\\.', perl = TRUE)
+```
+
+Now consider this in the context of feature generation.
+
+
+
+## Repetition
+
+```{r rep}
+x <- "1888 is the longest year in Roman numerals: MDCCCLXXXVIII"
+str_view(x, "CC?")
+```
+
+You can specify the number of matches precisely:
+
+`{n}` exactly n
+`{n,}` n or more
+`{,m}` at most m
+`{n,m}` between n and m
+
+

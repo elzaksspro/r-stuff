@@ -11,9 +11,9 @@
 
 <meta name="author" content="Nicholas Viau" />
 
-<meta name="date" content="2018-01-16" />
+<meta name="date" content="2018-06-19" />
 
-<title>Mutate</title>
+<title>Linear Regression</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -381,116 +381,105 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Mutate</h1>
+<h1 class="title toc-ignore">Linear Regression</h1>
 <h4 class="author"><em>Nicholas Viau</em></h4>
-<h4 class="date"><em>January 16, 2018</em></h4>
+<h4 class="date"><em>June 19, 2018</em></h4>
 
 </div>
 
 
-<div id="understanding-mutate" class="section level1">
-<h1>Understanding Mutate</h1>
-<p>The <code>mutate()</code> function allows you to edit and create new columns.</p>
-<p>Other interesting points:</p>
-<ul>
-<li>The pipe means you can follow a clear a logical order of operations.</li>
-<li>You can refer to columns you just created.</li>
-<li>It supports many, many creation functions.</li>
-<li>Can be used in combination with <strong>dplyr</strong>’s <code>case_when()</code> function to recode variables in place.</li>
-</ul>
+<blockquote>
+<p>The following uses the <code>MASS</code> and <code>ISLR</code> packages.</p>
+</blockquote>
+<div id="linear-regression-basics" class="section level1">
+<h1>Linear Regression Basics</h1>
+<p>Add.</p>
 <hr class="nick">
 </div>
-<div id="basic-operations" class="section level1">
-<h1>Basic Operations</h1>
-<div id="recoding-variables" class="section level2">
-<h2>Recoding Variables</h2>
-<p>The <code>case_when()</code> function allows you to vectorise multiple <code>if</code> and <code>else if</code> statements. It is an R equivalent of the SQL <code>CASE WHEN</code> statement. It is particularly useful when used with mutate when you want to create new variables based on a complex combination of other variables.</p>
-<p><em>Sources:</em></p>
-<ul>
-<li><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="uri">https://dplyr.tidyverse.org/reference/case_when.html</a></li>
-</ul>
-<hr />
+<div id="simple-linear-regression-in-r" class="section level1">
+<h1>Simple Linear Regression in R</h1>
+<p>The <strong>MASS</strong> library contains the <code>Boston</code> data set, which records <code>medv</code> (median house value) for neighborhoods around Boston.</p>
+<pre class="r"><code>library(MASS)
+library(ISLR)</code></pre>
+<p>Let’s start by fitting a simple linear regression using the <code>lm()</code> function. We will use <code>medv</code> as the response and <code>lstat</code> as the predictor. The basic syntax is <code>lm(y ~ x, data)</code>, where <code>y</code> is the response, <code>x</code> is the predictor, and <code>data</code> is our data set.</p>
+<pre class="r"><code>lm_fit &lt;- lm(data = Boston, medv ~ lstat)</code></pre>
+<p>If we send <code>lm_fit</code> to the command line, we will get some basic model output.</p>
+<pre class="r"><code>lm_fit</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = medv ~ lstat, data = Boston)
+## 
+## Coefficients:
+## (Intercept)        lstat  
+##       34.55        -0.95</code></pre>
+<p>We can use <code>summary(lm_fit)</code> to get more detailed information about the model. It will give us p-values, standard errors for the coeffecients, as well as the <span class="math inline">\(R^2\)</span> statistic and the F-statistic for the model.</p>
+<pre class="r"><code>summary(lm_fit)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = medv ~ lstat, data = Boston)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -15.168  -3.990  -1.318   2.034  24.500 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 34.55384    0.56263   61.41   &lt;2e-16 ***
+## lstat       -0.95005    0.03873  -24.53   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 6.216 on 504 degrees of freedom
+## Multiple R-squared:  0.5441, Adjusted R-squared:  0.5432 
+## F-statistic: 601.6 on 1 and 504 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div id="extracting-information" class="section level2">
+<h2>Extracting Information</h2>
+<p>You can use the <code>names()</code> function to see what other information are stored in <code>lm_fit</code>. You canextract these quantities by name—e.g., <code>lm_fit$coeffeceints</code>—but you can also use certain predefined extractors like <code>coef()</code>.</p>
+<pre class="r"><code># Print names
+names(lm_fit)</code></pre>
+<pre><code>##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;         
+##  [5] &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;  
+##  [9] &quot;xlevels&quot;       &quot;call&quot;          &quot;terms&quot;         &quot;model&quot;</code></pre>
+<pre class="r"><code># Coeffecient extractor
+coef(lm_fit)</code></pre>
+<pre><code>## (Intercept)       lstat 
+##  34.5538409  -0.9500494</code></pre>
+<div id="confidence-intervals" class="section level3">
+<h3>Confidence Intervals</h3>
+<p>Use the <code>confint()</code> function to get a <strong>confidence interval for the coeffecient estimates</strong>.</p>
+<pre class="r"><code>confint(lm_fit)</code></pre>
+<pre><code>##                 2.5 %     97.5 %
+## (Intercept) 33.448457 35.6592247
+## lstat       -1.026148 -0.8739505</code></pre>
 </div>
-<div id="basic-math-operations" class="section level2">
-<h2>Basic Math Operations</h2>
-<p>You can use the suite of R’s standard arithmetic operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and <code>^</code>. Keep in mind that these are all vectorised and use the <strong>recylcing rule</strong> discussed in the R Basics section.</p>
-<p><em>To add.</em></p>
-<hr />
-</div>
-<div id="editing-text" class="section level2">
-<h2>Editing Text</h2>
-<p><em>To add.</em></p>
-<hr />
-</div>
-<div id="fixing-dates" class="section level2">
-<h2>Fixing Dates</h2>
-<p>To fix dates you should use the <strong>lubridate</strong> package that ships with the tidyverse suite. A few examples:</p>
-<p><em>To add.</em></p>
+<div id="confidence-intervals-for-prediction" class="section level3">
+<h3>Confidence Intervals for Prediction</h3>
+<p>The <code>predict()</code> function is used to produce confidence intervals and prediction intervals for the prediction of <code>medv</code> given a value of <code>lstat</code>.</p>
+<pre class="r"><code>predict(lm_fit, data.frame(lstat=c(5 ,10 ,15)),
+        interval = &quot;confidence&quot;)</code></pre>
+<pre><code>##        fit      lwr      upr
+## 1 29.80359 29.00741 30.59978
+## 2 25.05335 24.47413 25.63256
+## 3 20.30310 19.73159 20.87461</code></pre>
+<p>Where the 95% confidence interval associated with a <code>lstat</code> value of 10 is (24.47413, 25.63256).</p>
 <hr class="nick">
 </div>
 </div>
-<div id="faq" class="section level1">
-<h1>FAQ</h1>
-<hr />
-<div id="how-do-i-keep-only-the-new-variables-i-created" class="section level2">
-<h2>How do I keep only the new variables I created?</h2>
-<p>Use <code>transmute()</code> instead of <code>mutate()</code>.</p>
-<hr />
 </div>
-<div id="how-do-i-change-the-class-of-columns" class="section level2">
-<h2>How do I change the class of columns?</h2>
-<p>Sometimes you may have a data frame whose columns must be changed. Mutate allows multiple ways to acheive this.</p>
-<pre class="r"><code># Small subset of data
-df &lt;- as_tibble(iris[1:5,])
-                
-# Mutate all columns
-df %&gt;% mutate_all(as.character)</code></pre>
-<pre><code>## # A tibble: 5 x 5
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##   &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;  
-## 1 5.1          3.5         1.4          0.2         setosa 
-## 2 4.9          3           1.4          0.2         setosa 
-## 3 4.7          3.2         1.3          0.2         setosa 
-## 4 4.6          3.1         1.5          0.2         setosa 
-## 5 5            3.6         1.4          0.2         setosa</code></pre>
-<p>You can also specify columns explicitly with the <code>vars()</code> argument.</p>
-<pre class="r"><code># Only certain columns
-df %&gt;% mutate_at(vars(Species, Petal.Length), as.character)</code></pre>
-<pre><code>## # A tibble: 5 x 5
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##          &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;  
-## 1          5.1         3.5 1.4                  0.2 setosa 
-## 2          4.9         3   1.4                  0.2 setosa 
-## 3          4.7         3.2 1.3                  0.2 setosa 
-## 4          4.6         3.1 1.5                  0.2 setosa 
-## 5          5           3.6 1.4                  0.2 setosa</code></pre>
-<p>You can also specify a series of columns connecting them with <code>:</code>.</p>
-<pre class="r"><code># Specify series of columns etc.
-df %&gt;% mutate_at(vars(Sepal.Length:Petal.Length, Species), as.character)</code></pre>
-<pre><code>## # A tibble: 5 x 5
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##   &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;  
-## 1 5.1          3.5         1.4                  0.2 setosa 
-## 2 4.9          3           1.4                  0.2 setosa 
-## 3 4.7          3.2         1.3                  0.2 setosa 
-## 4 4.6          3.1         1.5                  0.2 setosa 
-## 5 5            3.6         1.4                  0.2 setosa</code></pre>
-<p>Or you can use predicates. For example, this changes all factor columns to character:</p>
-<pre class="r"><code># Change class by predicate
-df %&gt;% mutate_if(is.factor, as.character)</code></pre>
-<pre><code>## # A tibble: 5 x 5
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  
-## 1          5.1         3.5          1.4         0.2 setosa 
-## 2          4.9         3            1.4         0.2 setosa 
-## 3          4.7         3.2          1.3         0.2 setosa 
-## 4          4.6         3.1          1.5         0.2 setosa 
-## 5          5           3.6          1.4         0.2 setosa</code></pre>
-<hr />
+<div id="multiple-linear-regression" class="section level1">
+<h1>Multiple Linear Regression</h1>
+<div id="basics" class="section level2">
+<h2>Basics</h2>
+<div id="excluding-variables" class="section level3">
+<h3>Excluding Variables</h3>
 </div>
-<div id="how-do-i-mutate-within-groups" class="section level2">
-<h2>How do I mutate within groups?</h2>
-<pre class="r"><code># df %&gt;% group_by(cat) %&gt;% mutate(id = row_number())</code></pre>
+</div>
+<div id="interaction-terms" class="section level2">
+<h2>Interaction Terms</h2>
+<p>It’s easy to include <strong>interaction terms</strong> using the <code>lm()</code> function.</p>
+</div>
+<div id="qualitative-predictors" class="section level2">
+<h2>Qualitative Predictors</h2>
 </div>
 </div>
 

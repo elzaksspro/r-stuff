@@ -1,0 +1,43 @@
+---
+title: "purrr"
+author: "Nicholas Viau"
+date: "May 15, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Basics
+
+```{r, data}
+library(tidyverse)
+
+# Create some basic data.
+df <- tibble(
+  a = rnorm(10),
+  b = rnorm(10),
+  c = rnorm(10),
+  d = rnorm(10)
+)
+```
+
+Resources:
+
+* Jenny Bryan's purrr Tutorial - https://jennybc.github.io/purrr-tutorial/
+* Amber Thomas - https://amber.rbind.io/blog/2018/03/26/purrr_iterations/
+* Good! Has whole series... - https://colinfay.me/purrr-web-mining/
+* https://www.hvitfeldt.me/2018/01/purrr-tips-and-tricks/ 
+* Lesser known purrr tricks - http://www.brodrigues.co/blog/2017-03-24-lesser_known_purrr/
+
+
+## map2()
+
+Note that the arguments that vary for each call come before the function; arguments that are the same for every call come after.
+
+
+## pmap()
+
+`pmap()` takes a list of arguments.
+

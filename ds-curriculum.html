@@ -11,19 +11,18 @@
 
 <meta name="author" content="Nicholas Viau" />
 
-<meta name="date" content="2018-04-23" />
 
 <title>DSC</title>
 
-<script src="ds-curriculum_files/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="ds-curriculum_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="ds-curriculum_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="ds-curriculum_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="ds-curriculum_files/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="ds-curriculum_files/navigation-1.1/tabsets.js"></script>
-<link href="ds-curriculum_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="ds-curriculum_files/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -70,7 +69,7 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="alone.css" type="text/css" />
 
 </head>
 
@@ -241,6 +240,28 @@ $(document).ready(function () {
     <li>
       <a href="data-arrange.html">Arrange Data: Arrange</a>
     </li>
+    <li class="dropdown-header">Specific Operations</li>
+    <li class="divider"></li>
+    <li>
+      <a href="data-dates-times.html">Dates and Times</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Statistics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">General</li>
+    <li class="divider"></li>
+    <li>
+      <a href="stats-basics.html">Basics</a>
+    </li>
+    <li>
+      <a href="stats-linear-regression.html">Linear Regression</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -257,12 +278,62 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">DSC</h1>
 <h4 class="author"><em>Nicholas Viau</em></h4>
-<h4 class="date"><em>April 23, 2018</em></h4>
+<h4 class="date"><em>May 8, 2018</em></h4>
 
 </div>
 
 
-<p>This is a general outline for learning the fundamentals of what many would call <em>data science</em>. This list is not set in stone and may change over time. I welcome and critiques or recommendations.</p>
+<p>This is a general notebook for learning the fundamentals of <em>data science</em>. I began this project with no formal training in computer science or mathematics/statistics (though I did begin with a few years of R under my belt). At the time, I was considering enrolling in a graduate program for data science, but wrestled with the notion of spending money on an education that could largely be acquired online, for free.</p>
+<p>I began working on a loose set of interests and goals. The learning process is both sequential and iterative: while certain concepts must be learned one after another, other skills must be honed throughout your learning experience.</p>
+<div id="overview-of-skills" class="section level2">
+<h2>Overview of Skills</h2>
+<div id="courses-and-readings" class="section level3">
+<h3>Courses and Readings</h3>
+<ol style="list-style-type: decimal">
+<li><p>Complete the <a href="https://www.coursera.org/specializations/statistics">Statistics With R Specialization</a> on Coursera. This will help you get a handle on not just statistics, but also on important concepts related to probability, sampling, research design, etc. The course textbook <a href="https://www.openintro.org/stat/textbook.php"><strong><em>OpenIntro Statistics</em></strong></a> is freely available.</p></li>
+<li><p>Read <a href="http://www-bcf.usc.edu/~gareth/ISL/"><em>An Introduction to Statistical Learning</em></a>, take the <a href="https://lagunita.stanford.edu/courses/HumanitiesSciences/StatLearning/Winter2016/about">MOOC</a> on Stanford Lagunita (both are freely available online), and thoroughly complete the tasks at the end of each chapter. Statistical learning involves both statistics and concepts related to calculus. This book is one of the common resources people mention when undertaking the learning process. According to the authors, the material is written for graduate students in <em>non-mathematical</em> sciences. For a more throrough treatment of the topics, see <a href="https://web.stanford.edu/~hastie/ElemStatLearn/"><em>Elements of Statistical Learning</em></a>.</p></li>
+<li><p>Complete the <a href="https://www.coursera.org/learn/machine-learning">Machine Learning</a> Coursera course taught by Andrew Ng. Also there’s these great <a href="https://machinelearningflashcards.com/">machine learning flashcards</a> available for a small price.</p></li>
+<li><p>At this point you delve into deep learning, perhaps?</p></li>
+</ol>
+</div>
+<div id="other-skills" class="section level3">
+<h3>Other Skills</h3>
+<ul>
+<li>Great <a href="https://datascienceinterview.quora.com/">list of questions</a> on Quora.
+<ul>
+<li>The questions come the <a href="http://www.datasciencequestions.com/">Data Science Interview Guide</a> Ebook.</li>
+</ul></li>
+<li><p>Get very comfortable with <strong>SQL</strong> syntax.</p></li>
+<li><p>Become profecient programming in <strong>Python</strong>. I come from an R background, so I wanted to learn Python.</p></li>
+</ul>
+</div>
+<div id="meta-skills" class="section level3">
+<h3>Meta Skills</h3>
+<p>Throughout this learning process you should begin reading about concepts related to applied data science. Some useful concepts include:</p>
+<ul>
+<li><p>Project Management. Though I was reading about issues related to reproducibility and project management for sometime, a good resource came about: The <a href="https://github.com/hadley/stats337">Stats 337: Readings in Applied Data Science</a> course at Stanford being taught by Hadley Wickham. Also see the <a href="https://peerj.com/collections/50-practicaldatascistats/">PeerJ collection</a> curated by Jenny Bryan and Hadley Wickham.</p></li>
+<li><p><em>Don’t get too bogged down in the theory!</em> This sort of stuff is to augment your skills throughout your life. Some of it may not become relevent until you are actually doing work.</p></li>
+<li><p>I also suggest reading about the job market, the interview process, and what it’s actually like to have a job in the field. Towards Data Science has a great series on this aptly named <a href="https://towardsdatascience.com/may-edition-getting-a-job-in-data-science-125996b1734c">Getting a Job in Data Science</a>. <a href="https://towardsdatascience.com/@kristenkehrer">Kristin Kehrer</a> and <a href="https://towardsdatascience.com/@kesari">Ganes Kesari</a> have some great blog posts on the subject.</p></li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Where does <strong>linear algebra</strong>, <strong>calculus</strong> etc. fit in here? Where to learn?
+<ul>
+<li>Justin Grimmer’s <a href="https://github.com/justingrimmer/MathCamp">Math Camp</a> at UChicago?</li>
+</ul></li>
+<li><strong>Think about setting up wiki for research notes.</strong> See: <a href="http://wcm1.web.rice.edu/open-notebook-history.html" class="uri">http://wcm1.web.rice.edu/open-notebook-history.html</a></li>
+<li>Reading about data science…
+<ul>
+<li>RBloggers</li>
+<li>Towards Data Science</li>
+<li>Various industries blogs (AirBNB, etc).</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="general-outline" class="section level2">
+<h2>General Outline</h2>
+<p>This list is not set in stone and may change over time. I welcome any critiques or recommendations.</p>
 <p><strong><em>Basics:</em></strong></p>
 <ul>
 <li><strong>Tools</strong> (languages)
@@ -294,16 +365,57 @@ $(document).ready(function () {
 <li><strong>Machine Learning and Prediction</strong> - See <em>Elements of Statistical Learning</em>.</li>
 <li><strong>Bayesian Statistics</strong> - As opposed to frequentist statistics. See David Robinson’s Bayesian statistics book?</li>
 </ul>
+<div id="reading-lists" class="section level3">
+<h3>Reading Lists</h3>
+<ul>
+<li><a href="https://github.com/hadley/stats337#readings" class="uri">https://github.com/hadley/stats337#readings</a></li>
+<li><a href="https://peerj.com/collections/50-practicaldatascistats/" class="uri">https://peerj.com/collections/50-practicaldatascistats/</a></li>
+</ul>
 <hr class="nick">
+</div>
+</div>
 <div id="statistics" class="section level2">
 <h2>Statistics</h2>
 <p>One of the great things about languages like R and Python is that many complex statistical operations can be completed in a few lines of code. Not only should you should know how to implement and interpret them, you should also know the underlying statistics behind them. Moreover, you should expect job interviews to ask you basic questions related statistics, specifically probability and probability distributions. Among the topics to read up on…</p>
 <ul>
-<li><strong>Probability</strong> - Start with basic principles of <a href="https://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter3.pdf">combinatorics (PDF)</a>. Practice with <a href="https://www.analyticsvidhya.com/blog/2017/04/40-questions-on-probability-for-all-aspiring-data-scientists/">probability questions</a> (also check out GRE questions related to probability). Practicing working with decision trees will be useful to help visualize and think through problems.</li>
+<li><strong>Probability</strong> - Start with basic principles of <a href="https://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter3.pdf">combinatorics (PDF)</a>. Practice with <a href="https://www.analyticsvidhya.com/blog/2017/04/40-questions-on-probability-for-all-aspiring-data-scientists/">probability questions</a> (also check out GRE questions related to probability). Practicing working with <a href="http://www.statisticshowto.com/how-to-use-a-probability-tree-for-probability-questions/">decision trees</a> will be useful to help visualize and think through problems.</li>
 <li><strong>Probability Distributions</strong> - In an interview, you may be asked a question like “You have a process that behaves like X – what distribution would you use to model that process?” This questions requires you o map a random process to a sensible distribution. This <a href="http://blog.cloudera.com/blog/2015/12/common-probability-distributions-the-data-scientists-crib-sheet/">blog post</a> is a great start.</li>
 <li><strong>Central Limit Theorem &amp; Hypothesis Testing</strong> -</li>
 </ul>
+<div id="books" class="section level3">
+<h3>Books</h3>
+<p>The following is a list of books I found useful for learning statistics.</p>
+<ul>
+<li><strong>Diez, Barr, and Cetinkaya-Rundel (2017)</strong>, <a href="https://www.openintro.org/stat/textbook.php"><em><strong>OpenIntro Statistics</strong></em></a> - This is the book that accompanies the Coursera course on statistics. Probably the best book I’ve found out there.</li>
+<li><strong>Navarro (2018)</strong>, <a href="https://compcogscisydney.org/learning-statistics-with-r/"><em><strong>Learning Statistics with R</strong></em></a> - This is fairly comprehensive book. It’s not as pithy and straight forward as OpenIntro, but the examples use base R and I’m a huge fan of the vignettes and intuitive explanations of certain concepts. Keep in mind the author’s background is in psychology.</li>
+</ul>
+<p><em>Some substantive sources</em>:</p>
+<ul>
+<li>Naked Statistics (2013) by Charles Wheelan</li>
+<li>The Signal and the Noise (2013)</li>
+<li><a href="https://www.economist.com/books-and-arts/2013/07/06/winds-of-change">Some data visualization readings…</a></li>
+</ul>
+<p><em>Further reading…</em></p>
+<ul>
+<li><strong>Cummings and Finch (2005)</strong>, “<a href="www.apastyle.org/manual/related/cumming-and-finch.pdf"><strong>Inference by Eye: Confidence Intervals and How to Read Pictures of Data</strong></a>”</li>
+<li><strong>Kaplan (2017)</strong>, “<a href="https://peerj.com/preprints/3205/"><strong>Teaching Stats for Data Science</strong></a>” - Good paper discussing modern approaches to learning statistics.</li>
+<li><strong>Waserstein and Lazar (2016)</strong>, “<a href="https://peerj.com/preprints/3205/"><strong>The ASA’s Statement on P-Values: Context, Process, and Purpose</strong></a>” - Encourages the use of confidence intervals and de-emphasizes the use of of p-values.</li>
+</ul>
+<p><em>To be determined…</em></p>
+<ul>
+<li><strong>Robinson (2018)</strong>, <em><strong>Introduction to Emperical Bayes</strong></em> - If I want to dive deeper into Bayesian statistics.</li>
+</ul>
 <hr class="nick">
+</div>
+</div>
+<div id="linear-algebra-and-multivariate-calculus" class="section level2">
+<h2>Linear Algebra and Multivariate Calculus</h2>
+</div>
+<div id="applied-research" class="section level2">
+<h2>Applied Research</h2>
+<ul>
+<li>Plain Text Social Science - <a href="http://plain-text.co/" class="uri">http://plain-text.co/</a></li>
+</ul>
 <div id="sources" class="section level3">
 <h3>Sources</h3>
 <ul>

@@ -1,0 +1,26 @@
+---
+title: "Resources"
+author: "Nicholas Viau"
+date: "March 14, 2018"
+output: html_document
+---
+
+This is an annotated list of publications and relevant organizations.
+
+# Publications
+
+# Organizations
+
+## Academic
+
+### Social Machines (MIT Media Lab)
+
+[Website](http://socialmachines.org/) | [Website](https://www.media.mit.edu/groups/social-machines/overview/) | [Publications](https://www.media.mit.edu/groups/social-machines/publications-list/)
+
+## Non-Profits
+
+### Cortico
+
+[Website](https://www.cortico.ai/) | [Blog](https://www.cortico.ai/blog/)
+
+Has roots in the MIT Media Lab. The organizations "aims to strengthen an American public sphere weakened by political, cultural and socioeconomic isolation."

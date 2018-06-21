@@ -9,9 +9,11 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="Nicholas Viau" />
 
+<meta name="date" content="2018-06-19" />
 
-<title>R Stuff</title>
+<title>Basic Statistical Operations</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +21,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -68,6 +73,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="styles.css" type="text/css" />
 
 </head>
 
@@ -161,6 +167,107 @@ $(document).ready(function () {
 <!-- code folding -->
 
 
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -274,26 +381,55 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">R Stuff</h1>
+<h1 class="title toc-ignore">Basic Statistical Operations</h1>
+<h4 class="author"><em>Nicholas Viau</em></h4>
+<h4 class="date"><em>June 19, 2018</em></h4>
 
 </div>
 
 
-<style>
+<div id="ensuring-reproducibility" class="section level2">
+<h2>Ensuring Reproducibility</h2>
+<p>Use <code>set.seed()</code> to ensure reproducibility.</p>
+</div>
+<div id="creating-random-variables" class="section level2">
+<h2>Creating Random Variables</h2>
+<p><em>Much is taken from Gareth et al. (2013)</em></p>
+<p>Here we set the seed to 617 and produce a vector of 20 random varaibles.</p>
+<pre class="r"><code>set.seed(617)
 
-h1 {
-  font-weight: bold;
-  margin: 1em 0 .5em 0;
-}
+rnorm(20)</code></pre>
+<pre><code>##  [1]  0.293916915  1.869148929  0.901772799 -1.268541777  1.226138833
+##  [6]  1.933838295 -0.020977800 -2.518443239  0.999318828  1.110076219
+## [11] -0.006845918  0.855629377  1.525379583 -0.378733798 -0.154754345
+## [16] -0.407704327 -0.923698181 -1.454554114 -1.325154014 -0.181150224</code></pre>
+<p>By default, <code>rnorm()</code> will create standard normal variables with a mean of 0 and a standard deviation of 1. You can alter the mean and standard deviations with the <code>mean</code> and <code>sd</code> arguments. We can then compute the correlation between the two sets with the <code>cor()</code> function.</p>
+<pre class="r"><code>x &lt;- rnorm(20)
+y &lt;- x + rnorm (20, mean = 50, sd = .1)
 
-</style>
-<div id="a-collection-of-hands-on-r-notes" class="section level3" style="padding-top: 0px;">
-<h3><em>A Collection of Hands-on R Notes</em></h3>
-<p>This website is a collection of notes for R. It’s updated as I see fit. These notes are primarily written for use in the tidyverse suite of packages, although I will include base R code or suggestions from other packages where appropriate.</p>
+cor(x, y)</code></pre>
+<pre><code>## [1] 0.9959774</code></pre>
+<p>The <code>mean()</code> and <code>var()</code> functions can be used to computer the mean and variance of a vector of numbers.</p>
+<pre class="r"><code>set.seed(617)
+y = rnorm (100)
+
+mean(y)</code></pre>
+<pre><code>## [1] -0.1169318</code></pre>
+<pre class="r"><code>var(y)</code></pre>
+<pre><code>## [1] 1.259892</code></pre>
+<pre class="r"><code>sqrt(var(y))</code></pre>
+<pre><code>## [1] 1.122449</code></pre>
+<pre class="r"><code>sd(y)</code></pre>
+<pre><code>## [1] 1.122449</code></pre>
+</div>
+<div id="summaries" class="section level2">
+<h2>Summaries</h2>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
