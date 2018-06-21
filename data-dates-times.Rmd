@@ -18,4 +18,35 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Dates and Times Basics
 
+Add.
 
+<hr class="nick">
+
+# Lubridate Basics
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+```{r}
+dt_test <- c("3 January 2018, 21:08", "3 January 2018, 21:15", "3 January 2018, 21:17",
+             "3 January 2018, 22:43", "3 January 2018, 22:54", "3 January 2018, 23:03")
+
+dt_test <- dmy_hm(dt_test)
+
+dt_test
+```
+
+## Timezones
+
+_See also:_
+
+* http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+## Rounding
+
+```{r}
+round_date(dt_test, "hour")
+round_date(dt_test, "15 mins")
+```
