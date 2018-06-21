@@ -15,18 +15,18 @@
 
 <title>Dates and Times</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="data-dates-times_files/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="data-dates-times_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="data-dates-times_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="data-dates-times_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="data-dates-times_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="data-dates-times_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="data-dates-times_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="data-dates-times_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="data-dates-times_files/navigation-1.1/tabsets.js"></script>
+<link href="data-dates-times_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="data-dates-times_files/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -390,6 +390,40 @@ div.tocify {
 
 <div id="dates-and-times-basics" class="section level1">
 <h1>Dates and Times Basics</h1>
+<p>Add.</p>
+<hr class="nick">
+</div>
+<div id="lubridate-basics" class="section level1">
+<h1>Lubridate Basics</h1>
+<pre class="r"><code>library(tidyverse)
+library(lubridate)</code></pre>
+<pre class="r"><code>dt_test &lt;- c(&quot;3 January 2018, 21:08&quot;, &quot;3 January 2018, 21:15&quot;, &quot;3 January 2018, 21:17&quot;,
+             &quot;3 January 2018, 22:43&quot;, &quot;3 January 2018, 22:54&quot;, &quot;3 January 2018, 23:03&quot;)
+
+dt_test &lt;- dmy_hm(dt_test)
+
+dt_test</code></pre>
+<pre><code>## [1] &quot;2018-01-03 21:08:00 UTC&quot; &quot;2018-01-03 21:15:00 UTC&quot;
+## [3] &quot;2018-01-03 21:17:00 UTC&quot; &quot;2018-01-03 22:43:00 UTC&quot;
+## [5] &quot;2018-01-03 22:54:00 UTC&quot; &quot;2018-01-03 23:03:00 UTC&quot;</code></pre>
+<div id="timezones" class="section level2">
+<h2>Timezones</h2>
+<p><em>See also:</em></p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones" class="uri">http://en.wikipedia.org/wiki/List_of_tz_database_time_zones</a></li>
+</ul>
+</div>
+<div id="rounding" class="section level2">
+<h2>Rounding</h2>
+<pre class="r"><code>round_date(dt_test, &quot;hour&quot;)</code></pre>
+<pre><code>## [1] &quot;2018-01-03 21:00:00 UTC&quot; &quot;2018-01-03 21:00:00 UTC&quot;
+## [3] &quot;2018-01-03 21:00:00 UTC&quot; &quot;2018-01-03 23:00:00 UTC&quot;
+## [5] &quot;2018-01-03 23:00:00 UTC&quot; &quot;2018-01-03 23:00:00 UTC&quot;</code></pre>
+<pre class="r"><code>round_date(dt_test, &quot;15 mins&quot;)</code></pre>
+<pre><code>## [1] &quot;2018-01-03 21:15:00 UTC&quot; &quot;2018-01-03 21:15:00 UTC&quot;
+## [3] &quot;2018-01-03 21:15:00 UTC&quot; &quot;2018-01-03 22:45:00 UTC&quot;
+## [5] &quot;2018-01-03 23:00:00 UTC&quot; &quot;2018-01-03 23:00:00 UTC&quot;</code></pre>
+</div>
 </div>
 
 
